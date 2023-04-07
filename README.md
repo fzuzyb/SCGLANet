@@ -1,9 +1,21 @@
-# NTIRE2023 SCGLANet
-### Code will be release soon
-### Base hardware Requirements
-- : 8 A40 GPUs
+# NTIRE2023 SCGLANet:Stereo Cross Global Learnable Attention Network
+
+### News
+**2023.04.07** The Baseline, including the pretrained models and train/test configs, are available now.
+
+### Installation
+This implementation based on [BasicSR](https://github.com/xinntao/BasicSR) which is a open source toolbox for image/video restoration tasks.
+    
+    cd  SCGLANet
+    python setup.py develop
+            
+### Training Base hardware Requirements
+- : 8 A40/RTX3090 GPUs
+
 ## 1. Quick Test 
-#### 1.1 Download the pretrained model to the dir of 'experiments/pretrained_models'
+#### 1.1 Download the pretrained model to the dir of 'experiments/pretrained_models'.
+#####
+   *pretrained model can be download at [百度网盘](https://pan.baidu.com/s/1ELaFEP2dzOR6q9suxjDLWg?pwd=rrhy),
        
 #### 1.2 Modify the dataroot_lq: in  'options/test/StereoSR'
         test_SCGLANet-L_4x_Track1.yml
@@ -34,24 +46,27 @@ After the first stage of training, Modify the 'pixel_opt:
 
     bash scripts/dist_train.sh 8 options/train/StereoSR/train_SCGLANet_L_x4_Track1.yml
     
-*** After training, choose the top 4 model to use "model ensamble" by average method to improve PSNR
+
     
 #### Track2 
 Modify the 'dataroot_gt' and 'dataroot_lq' about 'train dataset' and 'val dataset' 
-    in 'options/train/StereoSR/train_SCGLANet_L_x4_Track1.yml' and load Track1 pre-trained model
+    in 'options/train/StereoSR/train_SCGLANet_L_x4_Track2.yml' and load Track1 pre-trained model
     
     bash scripts/dist_train.sh 8 options/train/StereoSR/train_SCGLAGAN_L_x4_Track2.yml
     
     
 #### Track3 
 Modify the 'dataroot_gt' and 'dataroot_lq' about 'train dataset' and 'val dataset' 
-    in 'options/train/StereoSR/train_SCGLANet_L_x4_Track1.yml' and load Track1 pre-trained model
+    in 'options/train/StereoSR/train_SCGLANet_L_x4_Track3.yml' and load Track1 pre-trained model
     
     bash scripts/dist_train.sh 8 options/train/StereoSR/train_SCGLANet_Lx4_Track3.yml
     
-*** After training, choose the top 4 model to use "model ensemble" by average method to improve PSNR
-    
-    
+
+
+### Contact
+
+If you have any questions, please contact webbozhou@gmail.com 
+ 
 
     
     

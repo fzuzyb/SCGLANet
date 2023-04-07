@@ -1,0 +1,111 @@
+# general settings
+name: 1_SCGLANet_L_x4_Flickr1024
+model_type: StereoSRModel
+scale: 4
+num_gpu: auto  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: Flickr1024-sr-train
+    type: PairedStereoImageDataset
+    dataroot_gt: /home/iv/Annotation/ZJJ/datasets/Ntire2023/Track1&Track2_V2/HR_patch
+    dataroot_lq: /home/iv/Annotation/ZJJ/datasets/Ntire2023/Track1&Track2_V2/LR_patch
+    io_backend:
+        type: disk
+
+    gt_size_h: 100
+    gt_size_w: 300
+    use_hflip: true
+    use_vflip: true
+    use_rot: false
+    flip_RGB: true
+
+    # data loader
+    num_worker_per_gpu: 2
+    batch_size_per_gpu: 3
+    dataset_enlarge_ratio: 100
+    prefetch_mode: ~
+
+  val:
+    name: Flickr1024-sr-val
+    type: PairedStereoImageDataset
+
+    dataroot_gt: /home/iv/Annotation/ZJJ/datasets/Ntire2023/Flickr1024/Validation
+    dataroot_lq: /home/iv/Annotation/ZJJ/datasets/Ntire2023/Flickr1024/val_BIX4
+    io_backend:
+      type: disk
+
+    batch_size_per_gpu: 1
+
+# network structures
+network_g:
+  type: SCGLANet
+  up_scale: 4
+  width: 128
+  num_blks: [16,16,32,32,32]
+  drop_path_rate: 0.1
+  train_size: [1, 6, 30, 90]
+  drop_out_rate: 0.
+  temperature: 2.0
+
+# path
+path:
+  pretrain_network_g:
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  ema_decay: 0
+  optim_g:
+    type: AdamW
+    lr: !!float 5e-4
+    weight_decay: 0
+    betas: [0.9, 0.9]
+
+  scheduler:
+    type: TrueCosineAnnealingLR
+    T_max: 400000
+    eta_min: !!float 1e-7
+
+  total_iter: 400000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 2500
+  save_img: true
+  max_val: ~
+  pbar: true
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_skimage_ssim
+#      crop_border: 0
+#      test_y_channel: false
+
+
+# logging settings
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 2500
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
