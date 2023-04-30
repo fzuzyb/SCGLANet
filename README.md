@@ -61,7 +61,13 @@ Modify the 'dataroot_gt' and 'dataroot_lq' about 'train dataset' and 'val datase
     
     bash scripts/dist_train.sh 8 options/train/StereoSR/train_SCGLANet_Lx4_Track3.yml
     
-
+### BibTex
+    @InProceedings{Zhou2023Stereo,
+    author = {Zhou, Yuanbo and Xue, Yuyang and Deng, Wei and Nie, Ruofeng and Zhang, Jiajun and others},
+    title = {Stereo Cross Global Learnable Attention Module for Stereo Image Super-Resolution},
+    booktitle = {CVPRW},
+    year = {2023},
+    }
 
 ### Contact
 
