@@ -1,6 +1,8 @@
-# NTIRE2023 SCGLANet:Stereo Cross Global Learnable Attention Network
+# NTIRE2023 SCGLANet: Stereo Cross Global Learnable Attention Network 
+# RealSCGALGAN: Toward Real World Stereo Image Super-Resolution via Hybrid Degradation Model and Discriminator for Implied Stereo Image Information
 
 ### News
+**2023.05.22** The Dataset, including the Flickr1024RS models and StereoWeb20, are available now. The pretrained model of RealSCGLAGAN is also available now \
 **2023.04.07** The Baseline, including the pretrained models and train/test configs, are available now.
 
 ### Installation
@@ -12,6 +14,11 @@ This implementation based on [BasicSR](https://github.com/xinntao/BasicSR) which
 ### Training Base hardware Requirements
 - : 8 A40/RTX3090 GPUs
 
+### Dataset
+   
+   - StereoWeb20 and Flickr1024RS are available at [百度网盘](https://pan.baidu.com/s/1n-8RrVdOSnxeRljrV3hUHQ?pwd=hp6m)
+   
+## NTIRE2023: SCGLANet
 ## 1. Quick Test 
 #### 1.1 Download the pretrained model to the dir of 'experiments/pretrained_models'.
 #####
@@ -61,6 +68,13 @@ Modify the 'dataroot_gt' and 'dataroot_lq' about 'train dataset' and 'val datase
     
     bash scripts/dist_train.sh 8 options/train/StereoSR/train_SCGLANet_Lx4_Track3.yml
     
+## RealSCGLAGAN
+## 1. Quick Test 
+#### 1.1 Download the pretrained model to the dir of 'experiments/pretrained_models'.
+#####
+   *pretrained model can be download at [百度网盘](https://pan.baidu.com/s/1r8HW4wIBw0Y4UbCTgx-pLw?pwd=sc9q),
+       
+  
 ### BibTex
     @InProceedings{Zhou2023Stereo,
     author = {Zhou, Yuanbo and Xue, Yuyang and Deng, Wei and Nie, Ruofeng and Zhang, Jiajun and others},
