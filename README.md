@@ -1,6 +1,6 @@
 # NTIRE2023 SCGLANet: Stereo Cross Global Learnable Attention Network 
 # RealSCGALGAN: Toward Real World Stereo Image Super-Resolution via Hybrid Degradation Model and Discriminator for Implied Stereo Image Information
-
+[Paper](https://openaccess.thecvf.com/content/CVPR2023W/NTIRE/papers/Zhou_Stereo_Cross_Global_Learnable_Attention_Module_for_Stereo_Image_Super-Resolution_CVPRW_2023_paper.pdf)
 ### News
 **2023.05.22** The Dataset, including the Flickr1024RS models and StereoWeb20, are available now. The pretrained model of RealSCGLAGAN is also available now \
 **2023.04.07** The Baseline, including the pretrained models and train/test configs, are available now.
@@ -76,11 +76,12 @@ Modify the 'dataroot_gt' and 'dataroot_lq' about 'train dataset' and 'val datase
        
   
 ### BibTex
-    @InProceedings{Zhou2023Stereo,
-    author = {Zhou, Yuanbo and Xue, Yuyang and Deng, Wei and Nie, Ruofeng and Zhang, Jiajun and others},
-    title = {Stereo Cross Global Learnable Attention Module for Stereo Image Super-Resolution},
-    booktitle = {CVPRW},
-    year = {2023},
+    @inproceedings{zhou2023stereo,
+      title={Stereo Cross Global Learnable Attention Module for Stereo Image Super-Resolution},
+      author={Zhou, Yuanbo and Xue, Yuyang and Deng, Wei and Nie, Ruofeng and Zhang, Jiajun and Pu, Jiaqi and Gao, Qinquan and Lan, Junlin and Tong, Tong},
+      booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+      pages={1416--1425},
+      year={2023}
     }
 
 ### Contact
